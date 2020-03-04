@@ -1,0 +1,48 @@
+user1
+physics 90 chemistry 55 maths 89 signals 76 neurology 67 percentage 75.40 max physics,min chemistry
+user2
+physics 79 chemistry 78 maths 98 signals 67 neurology 67 percentage 77.80 max maths,min signals,neurology
+user3
+physics 79 chemistry 89 maths 70 signals 57 neurology 67 percentage 72.40 max chemistry,min signals
+user4
+physics 78 chemistry 90 maths 76 signals 93 neurology 67 percentage 80.80 max signals,min neurology
+user5
+physics 84 chemistry 55 maths 87 signals 83 neurology 67 percentage 75.20 max maths,min chemistry
+user6
+physics 98 chemistry 55 maths 78 signals 99 neurology 67 percentage 79.40 max signals,min chemistry
+user7
+physics 67 chemistry 55 maths 69 signals 69 neurology 67 percentage 65.40 max chemistry,maths min chemistry
+user8
+physics 58 chemistry 55 maths 89 signals 79 neurology 67 percentage 69.60 max maths,min chemistry
+user9
+physics 87 chemistry 55 maths 65 signals 79 neurology 67 percentage 70.60 max physics,min chemistry
+user10 
+physics 89 chemistry 55 maths 74 signals 87 neurology 74 percentage 75.80 max signals,min chemistry
+user11
+physics 99 chemistry 55 maths 93 signals 87 neurology 64 percentage 79.60 max physics,min chemistry
+user12
+physics 98 chemistry 55 maths 83 signals 44 neurology 68 percentage 69.60 max physics,min physics
+user13
+physics 97 chemistry 55 maths 98 signals 78 neurology 66 percentage 78.80 max maths,min chemistry
+user14
+physics 96 chemistry 55 maths 98 signals 97 neurology 77 percentage 84.60  max maths,min chemistry
+user15
+physics 95 chemistry 55 maths 78 signals 99 neurology 98 percentage 85.00 max signals,min chemistry
+user16
+physics 94 chemistry 55 maths 79 signals 69 neurology 78 percentage 75.00 max physics,min chemistry
+user17
+physics 93 chemistry 55 maths 97 signals 77 neurology 76 percentage 79.60 max maths,min chemistry
+user18
+physics 92 chemistry 55 maths 99 signals 90 neurology 98 percentage 86.80 max maths,min chemistry
+user19
+physics 91 chemistry 55 maths 100 signals 79 neurology 56 percentage 76.20 max maths,min chemistry
+user20
+physics 90 chemistry 55 maths 84 signals 69 neurology 68 percentage 73.20 max physics,min chemistry
+class average:55.5 ,number of students failed :00,user 11 is best performer and user 19 is worst performing students.
+ 
+
+
+
+
+
+
