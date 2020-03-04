@@ -1,0 +1,102 @@
+#include <stdio.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <string.h>
+#define PORT 3444
+
+int main(int argc, char const *argv[])
+{
+    int sock = 0, valread;
+    struct sockaddr_in serv_addr;
+    char *hello = "Hello from client";
+    char buffer[1000000] = {0};
+    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+    {
+        printf("\n Socket creation error \n");
+        return -1;
+    }
+
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(PORT);
+
+    // Convert IPv4 and IPv6 addresses from text to binary form
+    if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0)
+    {
+        printf("\nInvalid address/ Address not supported \n");
+        return -1;
+    }
+
+    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+    {
+        printf("\nConnection Failed \n");
+        return -1;
+    }
+    ///////////////////////////
+    /*sending filename*/
+    char fname[20];
+    printf("Enter filename : ");
+    scanf("%s",fname);
+
+    strcat(fname,".txt");
+//    send(sock , arr , strlen(arr) , 0 );
+    ////////////////////////////////////////////
+//    printf("Filename Sent to server\n");
+
+    ////////////////////////opening file///////////////////////
+    FILE *fp;
+    fp = fopen(fname,"r+");
+    if(fp==0)
+    {
+    	printf("can not open file");
+    }
+    if(fp!=0)
+    {
+    	printf("can open file");
+    }
+    ///////////////////////sending data to server//////////////////
+    int count;
+    char result[1024];
+        for(count=0;count<6;count++)
+        {
+            fgets(result, 1000, (FILE*)fp);
+            send(sock , result , strlen(result) , 0 );
+//            printf("%s",result);
+        }
+//    int i=0;
+//    char data[1024];
+//    for(i=0;i<=5;i++)
+//    {
+//    	fscanf(fp,"%s",data[i]);
+//    	send(sock , data[i] , strlen(data[i]) , 0 );
+//    }
+
+    char a[20],b[20],c[20],d[20],e[20],f[20],g[20],h[20],i[20],j[20],k[20],l[20],m[20],n[20],o[20],p[20],q[20],r[20];
+    fscanf(fp,"%s %s %s\n%s %s %s\n%s %s %s\n%s %s %s\n%s %s %s\n%s %s %s\n",a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r);
+    printf("\n");
+//    printf("%s\n",c);
+//    printf("%s\n",f);
+//    printf("%s\n",i);
+//    printf("%s\n",l);
+//    printf("%s\n",o);
+//    printf("%s\n",r);
+
+    ///////////////////////////sending data to server//////////////////
+//    send(sock , c , strlen(c) , 0 );
+//    send(sock , f , strlen(f) , 0 );
+//    send(sock , i , strlen(i) , 0 );
+//    send(sock , l , strlen(l) , 0 );
+//    send(sock , o , strlen(o) , 0 );
+//    send(sock , r , strlen(r) , 0 );
+
+
+//    printf("%s\n",buffer);
+//    char scor[20];
+//    valread = read(sock,scor,10240);
+//    printf("%f",scor);
+    float score;
+    read(sock, &score, sizeof(float));
+    printf("%f",score);
+    printf("Hey %s %s, your normalised score is %f\n",c,f,score);
+    return 0;
+}
