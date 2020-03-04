@@ -1,0 +1,212 @@
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/socket.h>
+#include <stdlib.h>
+#include <netinet/in.h>
+#include <string.h>
+#define PORT 3444
+int main(int argc, char const *argv[])
+{
+    int server_fd, new_socket, valread;
+    struct sockaddr_in address;
+    int opt = 1;
+    int addrlen = sizeof(address);
+    char buffer[1024] = {0};
+    char passwd[1024]={0};
+    char result[1000];
+    char *hello = "Hello from server";
+
+    // Creating socket file descriptor
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0)
+    {
+        perror("socket failed");
+        exit(EXIT_FAILURE);
+    }
+
+    // Forcefully attaching socket to the port 8080
+    if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT,
+                                                  &opt, sizeof(opt)))
+    {
+        perror("setsockopt");
+        exit(EXIT_FAILURE);
+    }
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons( PORT );
+
+    // Forcefully attaching socket to the port 8080
+    if (bind(server_fd, (struct sockaddr *)&address,
+                                 sizeof(address))<0)
+    {
+        perror("bind failed");
+        exit(EXIT_FAILURE);
+    }
+    if (listen(server_fd, 3) < 0)
+    {
+        perror("listen");
+        exit(EXIT_FAILURE);
+    }
+    if ((new_socket = accept(server_fd, (struct sockaddr *)&address,
+                       (socklen_t*)&addrlen))<0)
+    {
+        perror("accept");
+        exit(EXIT_FAILURE);
+    }
+//////////////////////////////////////////Receiving data from client////////////////////////////////
+    char dataa[10240],dataa1[10240];
+//    char s[20],t[20],u[20],v[20],w[20],x[20];
+    valread = read(new_socket,dataa,10240);
+//    printf("%s",dataa);
+    valread = read(new_socket,dataa1,10240);
+//      printf("%s",dataa1);
+
+      FILE *fi;
+      fi = fopen("transfer.txt","w+");
+      if(fi==0)
+      {
+      	printf("can not open file");
+      }
+//      if(fi!=0)
+//      {
+//      	printf("can open file");
+//      }
+      fprintf(fi,dataa);
+      fprintf(fi,dataa1);
+      fclose(fi);
+     /////////////////////breaking the string/////////////////////////////////////
+//      char a[20],b[20],c[20];
+      int x=0,y=0;
+      FILE *ft;
+      ft = fopen("transfer.txt","r+");
+//      for(x=0;x<=6;x++)
+//      {
+//    	  fscanf(ft,"%s %s %s",a[y],b[y],c[y]);
+//    	  y++;
+//      }
+      char a[20],b[20],c[20],d[20],e[20],f[20],g[20],h[20],i[20],j[20],k[20],l[20],m[20],n[20],o[20],p[20],q[20],r[20];
+      fscanf(ft,"%s %s %s\n%s %s %s\n%s %s %s\n%s %s %s\n%s %s %s\n%s %s %s",a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r);
+          printf("\n");
+//      fscanf(file,"%s %s %s",a,b,c);
+//          printf("%s\n",c);
+//          printf("%s\n",f);
+//          printf("%s\n",i);
+//          printf("%s\n",l);
+//          printf("%s\n",o);
+//          printf("%s\n",r);
+
+ //////////////////////////calculations////////////////////////////////////
+          int A,B,C,D;
+          int ii,ll,oo,rr;
+          ii=atoi(i);
+          ll=atoi(l);
+          oo=atoi(o);
+          rr=atoi(r);
+  /////////////////////////10TH////////////////////////////////
+  if(ii<=55)
+  {
+	  A=1;
+  }
+
+  if(ii>55 && ii<=60)
+ {
+	  A=2;
+ }
+  if(ii>60 && ii<=70)
+ {
+	  A=3;
+ }
+  if(ii>70 && ii<=80)
+ {
+	  A=5;
+ }
+  if(ii>80 && ii<=90)
+ {
+	  A=8;
+ }
+  if(ii>90)
+ {
+	  A=10;
+ }
+  /////////////////////12TH////////////////////////////
+  if(ll<=55)
+   {
+ 	  B=1;
+   }
+
+   if(ll>55 && ll<=60)
+  {
+ 	  B=2;
+  }
+   if(ll>60 && ll<=70)
+  {
+ 	  B=3;
+  }
+   if(ll>70 && ll<=80)
+  {
+ 	  B=5;
+  }
+   if(ll>80 && ll<=90)
+  {
+ 	  B=8;
+  }
+   if(ll>90)
+  {
+ 	  B=10;
+  }
+  ///////////////GRADUATION////////////////////////////
+   if(oo<=60)
+   {
+	   C=1;
+   }
+   if(oo>60 && oo<=65)
+   {
+	   C=2;
+   }
+   if(oo>65 && oo<=70)
+   {
+	   C=3;
+   }
+   if(oo>70 && oo<=75)
+   {
+	   C=5;
+   }
+   if(oo>75 && oo<=85)
+   {
+	   C=8;
+   }
+   if(oo>85)
+   {
+	   C=10;
+   }
+   ////////////////////////Work Ex/////////////////////////////
+   if(rr=0)
+   {
+	   D=0;
+   }
+   if(rr<=12 && rr>=1)
+   {
+	   D=1;
+   }
+   if(rr>12 && rr<=36)
+   {
+	   D=(1+((rr-12)/24));
+   }
+   if(rr>36)
+   {
+	   D=3;
+   }
+   float score,score1;
+   score1=(A+B+C+D);
+   score=score1/33;
+//   printf("%d\n",A);
+//   printf("%d\n",B);
+//   printf("%d\n",C);
+//   printf("%d\n",D);
+//   printf("%f",score);
+
+   printf("Hey %s %s, your normalised score is %f\n",c,f,score);
+   write(new_socket, &score, sizeof(float));
+//   char score_f[20];
+//   ftoa(score,score_f,4);
+//   send(new_socket , score_f , strlen(score_f) , 4 );
+}
